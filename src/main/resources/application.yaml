@@ -1,0 +1,4 @@
+showcase:
+  id-service:
+    prefix: "showcase"
+    joiner: "::"
