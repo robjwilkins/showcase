@@ -17,7 +17,7 @@ public class GreetingController {
 
         log.info("A greeting was requested");
 
-        Greeting greeting = Greeting.of("hello", "world");
+        Greeting greeting = new Greeting("hello", "world");
 
         if (!isEmpty(salutationParam)) {
             greeting = greeting.withSalutation(salutationParam);
