@@ -22,7 +22,6 @@ public class GreetingController {
         if (!isEmpty(salutationParam)) {
             greeting = greeting.withSalutation(salutationParam);
         }
-        String name = "world";
         if (!isEmpty(nameParam)) {
             greeting = greeting.withName(nameParam);
         }

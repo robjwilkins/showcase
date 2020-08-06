@@ -5,7 +5,7 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class Identifier {
+public class Example {
     String key;
     String value;
     String id;

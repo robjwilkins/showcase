@@ -22,7 +22,7 @@ class GreetingControllerSpec extends Specification {
     static ObjectMapper MAPPER = new ObjectMapper()
 
     @Unroll
-    def "should wish #name an appropriate greeting"() {
+    def "should wish #providedName an appropriate greeting"() {
         given:
         def get = get('/greeting')
                 .param('name', providedName)
