@@ -1,12 +1,13 @@
 package com.wilkins.showcase.controllers;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.With;
 
-@Value(staticConstructor = "of")
+@Value
+@AllArgsConstructor(onConstructor_={@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)})
 @With
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Greeting {

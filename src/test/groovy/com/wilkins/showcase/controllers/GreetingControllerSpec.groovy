@@ -1,6 +1,6 @@
 package com.wilkins.showcase.controllers
 
-
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
@@ -19,28 +19,34 @@ class GreetingControllerSpec extends Specification {
     @Autowired
     MockMvc mockMvc
 
+    static ObjectMapper MAPPER = new ObjectMapper()
+
     @Unroll
     def "should wish #name an appropriate greeting"() {
         given:
         def get = get('/greeting')
-                .param('name', name)
-                .param('salutation', salutation)
+                .param('name', providedName)
+                .param('salutation', providedSalutation)
 
 
         when:
         def jsonGreeting = mockMvc.perform(get)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath('$.name').value(name))
-                .andExpect(jsonPath('$.salutation').value(salutation))
+                .andExpect(jsonPath('$.name').value(providedName))
+                .andExpect(jsonPath('$.salutation').value(providedSalutation))
                 .andReturn().response.contentAsString
 
         then:
-        jsonGreeting == expectedGreeting
+        def greeting = MAPPER.readValue(jsonGreeting, Greeting.class)
+        with(greeting) {
+            salutation == providedSalutation
+            name == providedName
+        }
 
         where:
-        name    | salutation       | expectedGreeting
-        'world' | 'hello'          | '{"salutation":"hello","name":"world"}'
-        'robin' | "good afternoon" | '{"salutation":"good afternoon","name":"robin"}'
+        providedName | providedSalutation
+        'world'      | 'hello'
+        'robin'      | "good afternoon"
     }
 
 }
