@@ -2,4 +2,9 @@ build/
 .gradle/
 .idea/
 
+
 lombok.config
+/.classpath
+/.project
+/bin/
+/.settings/
