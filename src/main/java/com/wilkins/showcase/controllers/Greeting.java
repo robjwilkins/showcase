@@ -1,12 +1,9 @@
 package com.wilkins.showcase.controllers;
 
-import lombok.Value;
-import lombok.With;
+import java.io.Serializable;
 
-@Value(staticConstructor = "of")
-@With
-public class Greeting {
-    // private and final modifiers added by @Value annotation
-    String salutation;
-    String name;
+public record Greeting(String salutation, String name) implements Serializable {
+    public static Greeting of(String salutation, String name) {
+        return new Greeting(salutation, name);
+    }
 }
