@@ -21,22 +21,12 @@ running server:
 
 `curl "http://localhost:8080/greeting?salutation=good%20morning&name=robin"`
 
-## lombok
 
-The GreetingController and Greeting pojo provide a demo of some basic lombok code
+### Docker
+The application can be built into a Docker image and run on a docker environment:
 
-The project uses a lombok gradle plugin to enable the lombok magic when the project builds
+```bash
+docker build -t robjwilkins/showcase .
 
-In Idea `Annotation Processing` must be enabled in your preferences
-
-### Greeting class
-
-this class:
-- is annotated with `@Value` making the class immutable
-- is annotated with `@With` adding withers for the fields
-
-### GreetingController
-
-this class:
-- provides an example of how the Greeting class can be used
-- demonstrates the lombok `@Slf4j` annotation for creating a logger
+docker run -p 8080:8080 robjwilkins/showcase
+```
