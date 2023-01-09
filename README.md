@@ -1,11 +1,17 @@
 # showcase
 
-Provides demo of some nifty java stuff. 
+This projects provides a demo of the changes required to add various interesting java features.
+`master` branch currently contains a small 'vanilla' springboot application, which runs on Java17, builds using gradle,
+and contains a simple 'hello world' type controller.
 
 There are a number of open pull requests, demonstrating how to add different features. The pull requests for these features
 are being kept separate (unmerged) to show the necessary changes to add the given feature without the need to unpick
-them from the existing codebase. Master currently contains a 'vanilla' springboot application, which runs on Java17, 
-and builds using gradle and contains a simple 'hello world' type controller.
+them from the existing codebase. 
+
+The current PR requests cover the following demos:
+- [Http endpoint to download/stream a Zipfile containing PDFs (which themselves are also streamed)](https://github.com/robjwilkins/showcase/pull/7)
+- [Scheduling of tasjs to be completed asynchronously using the Quartz framework](https://github.com/robjwilkins/showcase/pull/2)
+- [Use of the spock groovy framework for data driven testing](https://github.com/robjwilkins/showcase/pull/1)
 
 ## Building
 
