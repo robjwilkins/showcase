@@ -1,4 +1,4 @@
-package com.wilkins.showcase.controllers;
+package com.wilkins.showcase.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class GreetingControllerTest {
 
     @Test
     void returnsGreeting() throws Exception {
-        mockMvc.perform(get("/greeting"))
+        mockMvc.perform(get("/greetings"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.salutation", is("hello")))
                 .andExpect(jsonPath("$.name", is("world")));
