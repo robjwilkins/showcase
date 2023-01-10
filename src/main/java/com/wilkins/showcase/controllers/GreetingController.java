@@ -15,7 +15,7 @@ public class GreetingController {
 
     @GetMapping
     public Greeting getGreeting(@RequestParam(name = "salutation", required = false, defaultValue = "hello") String salutationParam,
-                               @RequestParam(name = "name", required = false, defaultValue = "world") String nameParam) {
+                                @RequestParam(name = "name", required = false, defaultValue = "world") String nameParam) {
 
         log.info("A greeting was requested");
 
