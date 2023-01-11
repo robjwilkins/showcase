@@ -1,8 +1,10 @@
 package com.wilkins.showcase.controller;
 
+import com.wilkins.showcase.service.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -15,6 +17,8 @@ public class GreetingControllerTest {
 
     @Autowired
     MockMvc mockMvc;
+    @MockBean
+    PersonRepository personRepository;
 
     @Test
     void returnsGreeting() throws Exception {
