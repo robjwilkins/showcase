@@ -1,0 +1,9 @@
+kebab:
+  config:
+    key-one: a
+    key-two: b
+app:
+  default:
+    greeting:
+      salutation: hello
+      name: world
