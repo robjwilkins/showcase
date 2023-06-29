@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.1'
+    id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
 }
@@ -11,9 +11,20 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    togglz_version = "4.0.1"
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    implementation("org.togglz:togglz-spring-boot-starter:${togglz_version}")
+    implementation("org.togglz:togglz-console:${togglz_version}")
+//    implementation("org.togglz:togglz-security-spring-boot-starter:${togglz_version}")
 }
 
 test {
