@@ -1,0 +1,23 @@
+togglz:
+  enabled:
+    true
+  features:
+    CHEEKY_GREETING:
+      enabled: false
+  console:
+    secured: false
+    use-management-port: true
+  endpoint:
+    enabled: true
+    id: togglz
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'togglz, health'
+  server:
+    port: 8081
+
+spring:
+  main:
+    banner-mode: off
