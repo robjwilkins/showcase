@@ -1,0 +1,4 @@
+spring:
+  mail:
+    host: smtp-client
+    port: 1025
