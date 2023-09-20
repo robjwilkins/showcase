@@ -1,0 +1,38 @@
+services:
+  showcase:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+      - "8000:8000"
+    environment:
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000
+
+  smtp-client:
+    image: maildev/maildev:2.1.0
+    command:
+      - "--web"
+      - "1080"
+      - "--smtp"
+      - "1025"
+      - "--auto-relay"
+      - "--verbose"
+    environment:
+      - MAILDEV_OUTGOING_HOST=smtp-server
+      - MAILDEV_OUTGOING_PORT=1025
+    expose:
+      - "1025"
+      - "1080"
+    ports:
+      - "10000:1080"
+      - "10001:1025"
+
+  smtp-server:
+    image: greenmail/standalone:2.0.0
+    environment:
+      - GREENMAIL_OPTS=-Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=1025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=1143 -Dgreenmail.auth.disabled -Dgreenmail.startup.timeout=10000
+    expose:
+      - "1025"
+      - "1143"
+#    ports:
+#      - "20000:1143"
