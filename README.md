@@ -1,7 +1,7 @@
 # showcase
 
 This projects provides a demo of the changes required to add various interesting java features.
-`master` branch currently contains a small 'vanilla' springboot application, which runs on Java23, builds using gradle,
+`master` branch currently contains a small 'vanilla' springboot application, which runs on Java22, builds using gradle,
 and contains a simple 'hello world' type controller.
 
 There are a number of open pull requests, demonstrating how to add different features. The pull requests for these features
