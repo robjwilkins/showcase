@@ -26,7 +26,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '23'
+          java-version: '22'
           distribution: 'adopt'
           architecture: x64
       - name: Build with Gradle
