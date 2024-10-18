@@ -2,3 +2,13 @@ server:
   port: 8080
   servlet:
     application-display-name: showcase
+spring:
+  datasource:
+    username: showcase
+    password: password
+    url: jdbc:h2:mem:showcase
+    driverClassName: org.h2.Driver
+    database-platform: org:hibernate:dialect:H2Dialect
+  h2:
+    console:
+      enabled: true
