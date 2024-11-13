@@ -2,3 +2,12 @@ server:
   port: 8080
   servlet:
     application-display-name: showcase
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:showcase
+    username: showcase
+    password: Passw0rd!
