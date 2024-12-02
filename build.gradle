@@ -21,6 +21,8 @@ dependencies {
     implementation('org.flywaydb:flyway-core')
     runtimeOnly('com.h2database:h2')
 
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
