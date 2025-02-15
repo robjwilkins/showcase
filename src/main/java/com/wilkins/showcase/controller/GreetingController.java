@@ -1,5 +1,6 @@
 package com.wilkins.showcase.controller;
 
+import com.wilkins.showcase.service.GreetingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
     private static final Logger log = LoggerFactory.getLogger(GreetingController.class);
+    private final GreetingService greetingService;
+
+    public GreetingController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
 
     @GetMapping
     public JsonGreeting getGreeting(@RequestParam(name = "salutation", required = false, defaultValue = "hello") String salutationParam,
@@ -23,6 +29,6 @@ public class GreetingController {
 
         log.info("Greeting returned: {}", greeting);
 
-        return greeting;
+        return JsonGreeting.from(greetingService.send(greeting.asGreeting()));
     }
 }
