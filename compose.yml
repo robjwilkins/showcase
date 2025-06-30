@@ -1,0 +1,30 @@
+services:
+
+#  showcase:
+#    build:
+#      context: .
+#    ports:
+#      - "8080:8080"
+#      - "8000:8000"
+#    environment:
+#      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=password"
+    volumes:
+#      - "~/workspace/showcase/postgres/data:/var/lib/postgresql/data"
+      - "~/workspace/showcase/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+
+  flyway:
+    image: flyway/flyway:11-alpine
+    depends_on:
+      - postgres
+    volumes:
+      - "~/workspace/showcase/postgres/flyway/sql:/flyway/sql"
+      - "~/workspace/showcase/postgres/flyway/flyway.config:/flyway/conf/flyway.config"
+    command: -configFiles=/flyway/conf/flyway.config migrate

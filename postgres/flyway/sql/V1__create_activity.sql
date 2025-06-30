@@ -1,0 +1,5 @@
+CREATE TABLE activity
+(
+    ID   TEXT PRIMARY KEY,
+    NAME TEXT
+);
